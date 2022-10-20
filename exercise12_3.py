@@ -13,6 +13,7 @@ import urllib.request
 
 fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
 chars = 0
+letter = 0
 char_limit = 3000
 for line in fhand:
     # \n is considered a character; this follow commands like wc.
@@ -25,4 +26,10 @@ for line in fhand:
         char_remain = char_limit - chars - 1
         print(line[:char_remain])
     chars = next_count
-print(chars)
+    for word in line:
+        if word == ' ':
+            continue
+        letter += 1
+    print("Until this line had",letter,"characters")
+    space = chars - letter
+print(chars, "with",space,"space")
