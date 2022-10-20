@@ -47,3 +47,6 @@ relative_lst.sort(reverse=True)         # Sorts from highest rel freq
 
 for key, val in relative_lst:
     print(key, val)
+
+print("Letter with most counting is", relative_lst[:1])
+print("Letter with smallest count is", relative_lst[-1:])
