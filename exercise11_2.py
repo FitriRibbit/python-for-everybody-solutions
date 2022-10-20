@@ -19,7 +19,7 @@ by Charles R. Severance
 """
 import re
 
-
+countall = 0
 rev = []
 rev_ave = 0
 
@@ -33,6 +33,7 @@ except FileNotFoundError:
 
 for line in fhand:
     line = line.rstrip()
+    countall += 1
     rev_temp = re.findall('^New Revision: ([0-9.]+)', line)
     for val in rev_temp:
         val = float(val)            # Convert the strings to floats
@@ -42,4 +43,7 @@ rev_sum = sum(rev)
 count = float(len(rev))
 if count:
     rev_ave = rev_sum / count
-print(rev_ave)
+if countall:
+    percentageline = (count / countall) * 100
+print("{:0,.2f}".format(rev_ave), "with total:", rev_sum, "and count is", count)
+print("%.2f" %percentageline,"percent from", "{:0,}".format(countall) )
