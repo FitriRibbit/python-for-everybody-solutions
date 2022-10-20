@@ -27,7 +27,13 @@ html = urllib.request.urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, 'html.parser')
 
 # Retrieve all of the anchor tags
-tags = soup('p')
+input_tags = input('Input element you wanna know ')
+tags = soup(input_tags)
+
 for tag in tags:
-    count += 1                          # Counter
+   count += 1                          # Counter
+
+if count == 0:
+    print("There are not",input_tags,"in",url)  
+    quit()
 print(count)
