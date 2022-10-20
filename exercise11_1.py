@@ -21,18 +21,29 @@ by Charles R. Severance
 """
 import re
 
-count = 0                               # Initialize variables
+def countLine():
+    
+    count = 0                               # Initialize variables
 
-input_exp = input('Enter a regular expression: ')
-reg_exp = str(input_exp)                # Regular Expressions are strings
-fname = 'mbox.txt'
-fhand = open(fname)
+    text = input('Enter file name: ').lower()
+    input_exp = input('Enter a regular expression: ')
+    reg_exp = str(input_exp)                # Regular Expressions are strings
+    fhand = open(text)
 
-for line in fhand:
-    line = line.rstrip()
+    for line in fhand:
+        line = line.rstrip()
 
     # Only counts if something was found
-    if re.findall(reg_exp, line) != []:
-        count += 1
+        if re.findall(reg_exp, line) != []:
+            count += 1
 
-print(fname + ' had ' + str(count) + ' lines that matched ' + reg_exp)
+    
+    print(text + ' had ' + str(count) + ' lines that matched ' + reg_exp)
+
+countLine()
+while True:
+    ask = input('Wanna count? (y/n) ')
+    if ask == 'y' or ask == 'Y':
+        countLine()
+    else:
+        quit()
