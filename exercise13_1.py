@@ -26,6 +26,10 @@ else:
     serviceurl = 'http://maps.googleapis.com/maps/api/geocode/json?'
 
 while True:
+    #for replay
+    again = input("Wanna know? (y/n) ")
+    if again == 'N' or again == 'n':
+        quit()
     address = input('Enter location: ')
     if not address:
         break
