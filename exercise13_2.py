@@ -15,6 +15,7 @@ import urllib.parse
 
 
 site = input('Enter URL: ')
+number = int(input("Pass number: "))
 # Short circuit to default URL if none is entered
 site = site or 'http://py4e-data.dr-chuck.net/comments_42.json'
 
@@ -32,5 +33,7 @@ comments = json_list['comments']
 total = 0
 for comment in comments:
     total += comment['count']
+    if comment['count'] == number:
+        print(comment['name'],"with value",number)
 
 print(total)
